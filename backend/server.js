@@ -22,12 +22,9 @@ app.get("/", (req, res, next) => {
 
 // Create a new reservation
 app.post("/reservations", (req, res) => {
-    console.log("create reservation");
+    console.log("Creating reservation");
     console.log(req.body);
     const { restaurant, name, date, guests } = req.body;
-
-    // Log the incoming values
-    console.log(`Restaurant: ${restaurant}, Name: ${name}, Date: ${date}, Guests: ${guests}`);
 
     // Get restaurant_id based on restaurant name
     db.get("SELECT id FROM restaurants WHERE name = ?", [restaurant], (err, restaurantRow) => {

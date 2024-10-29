@@ -23,25 +23,6 @@ import './App.css';
 //   return response.data;
 // };
 
-// export const getRestaurants = async () => {
-//   const response = await axios.get(`${API_URL}/restaurants`);
-//   return response.data;
-// };
-
-// export const getCustomers = async () => {
-//   const response = await axios.get(`${API_URL}/customers`);
-//   return response.data;
-// };
-
-// export const getRestaurantMenu = async (id) => {
-//   const response = await axios.get(`${API_URL}/restaurants/${id}/menu`);
-//   return response.data;
-// };
-
-// export const getRestaurantReviews = async (id) => {
-//   const response = await axios.get(`${API_URL}/restaurants/${id}/reviews`);
-//   return response.data;
-// };
 const App = () => {
   return (
     <div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const API_URL = 'http://localhost:8000';
+
 const ReservationForm = () => {
   const [formData, setFormData] = useState({
     restaurant: '',
@@ -11,22 +12,18 @@ const ReservationForm = () => {
   });
 
    const createReservation = async (reservation) => {
-    console.log("create reservation");
     const response = await axios.post(`${API_URL}/reservations`, reservation);
-    console.log("response returned");
     return response.data;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    console.log(e.target.value)
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("handle submit");
       await createReservation(formData);
       setFormData({ restaurant: '', name: '', date: '', guests: '' }); // Reset the form fields
     } catch (error) {
