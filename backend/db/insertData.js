@@ -2,11 +2,11 @@ const db = require('../config/database');
 
 // Insert data into the "restaurants" table
 const insertRestaurants = `
-INSERT INTO restaurants (name, address, phone, website) VALUES
-('The Italian Place', '123 Main St', '555-1234', 'http://italianplace.com'),
-('Sushi World', '456 Elm St', '555-5678', 'http://sushiworld.com'),
-('BBQ Haven', '789 Oak St', '555-8765', 'http://bbqhaven.com'),
-('Vegan Delight', '321 Pine St', '555-4321', 'http://vegandelight.com')
+INSERT INTO restaurants (name, address, phone) VALUES
+('The Italian Place', '123 Main St', '555-1234'),
+('Sushi World', '456 Elm St', '555-5678'),
+('BBQ Haven', '789 Oak St', '555-8765'),
+('Vegan Delight', '321 Pine St', '555-4321')
 `;
 
 db.run(insertRestaurants, (err) => {
@@ -36,11 +36,11 @@ db.run(insertCustomers, (err) => {
 
 // Insert data into the "reservations" table
 const insertReservations = `
-INSERT INTO reservations (restaurant_id, customer_id, reservation_date, number_of_people, status) VALUES
-(1, 1, '2024-10-25 18:30:00', 2, 'confirmed'),
-(2, 2, '2024-10-26 19:00:00', 4, 'pending'),
-(3, 3, '2024-10-27 20:00:00', 3, 'cancelled'),
-(4, 4, '2024-10-28 17:00:00', 5, 'confirmed')
+INSERT INTO reservations (restaurant_id, customer_id, reservation_date, number_of_people) VALUES
+(1, 1, '2024-10-25', 2),
+(2, 2, '2024-10-26', 4),
+(3, 3, '2024-10-27', 3),
+(4, 4, '2024-10-28', 5)
 `;
 
 db.run(insertReservations, (err) => {
@@ -53,11 +53,15 @@ db.run(insertReservations, (err) => {
 
 // Insert data into the "menus" table
 const insertMenus = `
-INSERT INTO menus (restaurant_id, item_name, description, price, category) VALUES
-(1, 'Spaghetti Carbonara', 'Classic Italian pasta with eggs, cheese, pancetta, and pepper', 12.50, 'Pasta'),
-(2, 'Dragon Roll', 'Sushi roll with eel, avocado, cucumber, and spicy mayo', 14.00, 'Sushi'),
-(3, 'Pulled Pork Sandwich', 'Slow-cooked pulled pork with BBQ sauce on a bun', 9.00, 'BBQ'),
-(4, 'Vegan Burger', 'Plant-based burger with lettuce, tomato, and vegan mayo', 11.00, 'Entree')
+INSERT INTO menus (restaurant_id, item_name, price) VALUES
+(1, 'Spaghetti Carbonara', 12.50),
+(1, 'Margherita Pizza', 10.00),
+(2, 'Dragon Roll', 14.00),
+(2, 'Salmon Nigiri', 8.50),
+(3, 'Pulled Pork Sandwich', 9.00),
+(3, 'BBQ Ribs', 15.00),
+(4, 'Vegan Burger', 11.00),
+(4, 'Quinoa Salad', 7.50)
 `;
 
 db.run(insertMenus, (err) => {
