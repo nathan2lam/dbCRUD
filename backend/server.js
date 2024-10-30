@@ -22,7 +22,6 @@ app.get("/", (req, res, next) => {
 
 // Create a new reservation
 app.post("/reservations", (req, res) => {
-    console.log("Creating reservation");
     console.log(req.body);
     const { restaurant, name, date, guests } = req.body;
 
@@ -78,17 +77,16 @@ app.get("/reservations", (req, res) => {
 
 // Update a reservation
 app.put("/reservations/:id", (req, res) => {
-    const { id } = req.params;
-    const { restaurant_id, customer_id, reservation_date, number_of_people } = req.body;
+    const { id, date, guests } = req.body;
     db.run(
-        "UPDATE reservations SET restaurant_id = ?, customer_id = ?, reservation_date = ?, number_of_people = ? WHERE id = ?",
-        [restaurant_id, customer_id, reservation_date, number_of_people, id],
+        "UPDATE reservations SET reservation_date = ?, number_of_people = ? WHERE id = ?",
+        [date, guests, id],
         (err) => {
             if (err) {
                 console.error(err.message);
                 res.status(500).send("Error updating reservation");
             } else {
-                res.send("Reservation updated");
+                res.status(201).send("Reservation updated");
             }
         }
     );
@@ -113,44 +111,6 @@ app.get("/restaurants", (req, res) => {
         if (err) {
             console.error(err.message);
             res.status(500).send("Error retrieving restaurants");
-        } else {
-            res.json(rows);
-        }
-    });
-});
-
-// Get all customers
-app.get("/customers", (req, res) => {
-    db.all("SELECT * FROM customers", (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            res.status(500).send("Error retrieving customers");
-        } else {
-            res.json(rows);
-        }
-    });
-});
-
-// Get all menu items for a restaurant
-app.get("/restaurants/:id/menu", (req, res) => {
-    const { id } = req.params;
-    db.all("SELECT * FROM menus WHERE restaurant_id = ?", [id], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            res.status(500).send("Error retrieving menu items");
-        } else {
-            res.json(rows);
-        }
-    });
-});
-
-// Get all reviews for a restaurant
-app.get("/restaurants/:id/reviews", (req, res) => {
-    const { id } = req.params;
-    db.all("SELECT * FROM reviews WHERE restaurant_id = ?", [id], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            res.status(500).send("Error retrieving reviews");
         } else {
             res.json(rows);
         }
