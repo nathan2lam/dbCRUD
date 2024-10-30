@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const API_URL = 'http://localhost:8000';
+
 const ReservationList = () => {
   const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -8,9 +10,10 @@ const ReservationList = () => {
 
   const fetchReservations = async () => {
     try {
+      console.log("fetch resersvations");
       setLoading(true);
       setError(null);
-      const response = await axios.get('/reservations');
+      const response = await axios.get(`${API_URL}/reservations`);
       setReservations(response.data);
     } catch (err) {
       setError(err.message || 'Failed to fetch reservations');
@@ -19,15 +22,11 @@ const ReservationList = () => {
     }
   };
 
-  const handleSubmit = () => {
-    fetchReservations();
-  };
-
   return (
     <div>
       <h2>Reservations</h2>
       
-      <button onClick={handleSubmit} disabled={loading}>
+      <button onClick={fetchReservations} disabled={loading}>
         {loading ? 'Loading...' : 'Load Reservations'}
       </button>
 
@@ -55,7 +54,7 @@ const ReservationList = () => {
           </tbody>
         </table>
       ) : (
-        !loading && <div>No reservations found. Click the button to load data.</div>
+        !loading && <div>Click the button to load data.</div>
       )}
     </div>
   );

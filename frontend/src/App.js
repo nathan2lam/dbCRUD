@@ -1,10 +1,5 @@
 import ReservationForm from './components/reservationForm';
 import ReservationList from './components/reservationList';
-import RestaurantList from './components/restaurantList';
-import CustomerList from './components/customerList';
-import RestaurantMenu from './components/restaurantMenu';
-import RestaurantReviews from './components/restaurantReviews';
-import logo from './logo.svg';
 import './App.css';
 
 
@@ -28,8 +23,8 @@ const App = () => {
     <div>
       <h1>Restaurant Reservation System</h1>
       <ReservationForm />
-      {/* <ReservationList />
-      <RestaurantList />
+      <ReservationList />
+      {/* <RestaurantList />
       <CustomerList />
       <RestaurantMenu restaurantId={1} />
       <RestaurantReviews restaurantId={1} /> */}
