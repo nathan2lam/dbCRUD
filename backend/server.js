@@ -94,7 +94,7 @@ app.put("/reservations/:id", (req, res) => {
 
 // Delete a reservation
 app.delete("/reservations/:id", (req, res) => {
-    const { id } = req.params;
+    const { id } = req.query;
     db.run("DELETE FROM reservations WHERE id = ?", [id], (err) => {
         if (err) {
             console.error(err.message);

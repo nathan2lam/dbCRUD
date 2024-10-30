@@ -4,10 +4,7 @@ import ReservationUpdate from './components/updateReservation';
 import ReservationDelete from './components/deleteReservation';
 import './App.css';
 
-// export const deleteReservation = async (id) => {
-//   const response = await axios.delete(`${API_URL}/reservations/${id}`);
-//   return response.data;
-// };
+
 
 const App = () => {
   return (

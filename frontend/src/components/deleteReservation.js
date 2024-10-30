@@ -7,9 +7,13 @@ const ReservationDelete = () => {
     const [id, setId] = useState('');
 
     const deleteReservation = async (id) => {
-        const response = await axios.delete(`${API_URL}/reservations/id`, id);
+        console.log("Delete Reservation");
+        console.log(id);
+        const response = await axios.delete(`${API_URL}/reservations/id`, {
+            params: { id }
+        });
         return response.data;
-      };
+    };
 
     const handleChange = (e) => {
         setId(e.target.value);
@@ -41,6 +45,7 @@ const ReservationDelete = () => {
                     required
                     />
                 </label>
+                <button type="submit">Delete Reservation</button>
             </form>
         </div>
     )
