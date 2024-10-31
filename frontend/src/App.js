@@ -8,12 +8,14 @@ import './App.css';
 
 const App = () => {
   return (
-    <div>
+    <div className="home">
       <h1>Restaurant Reservation System</h1>
-      <ReservationForm />
       <ReservationList />
-      <ReservationUpdate />
-      <ReservationDelete />
+      <div className='form-container'>
+        <ReservationForm />
+        <ReservationUpdate />
+        <ReservationDelete />
+      </div>
     </div>
   );
 };

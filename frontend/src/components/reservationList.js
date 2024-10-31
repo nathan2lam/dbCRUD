@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './reservationList.css';
 
 const API_URL = 'http://localhost:8000';
 
@@ -23,8 +24,8 @@ const ReservationList = () => {
   };
 
   return (
-    <div>
-      <h2>Reservations</h2>
+    <div className='list'>
+      <h2>Read reservations</h2>
       
       <button onClick={fetchReservations} disabled={loading}>
         {loading ? 'Loading...' : 'Load Reservations'}
@@ -35,7 +36,7 @@ const ReservationList = () => {
       )}
 
       {reservations.length > 0 ? (
-        <table>
+        <table className='table'>
           <thead>
             <tr>
               {Object.keys(reservations[0]).map((header) => (

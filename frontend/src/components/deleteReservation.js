@@ -31,23 +31,22 @@ const ReservationDelete = () => {
 
 
     return (
-        <div>
+        <form className='form' onSubmit={handleSubmit}>
             <h2>Delete a reservation</h2>
 
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Reservation ID:
-                    <input
-                    type='number'
-                    name='id'
-                    value={id}
-                    onChange={handleChange}
-                    required
-                    />
-                </label>
-                <button type="submit">Delete Reservation</button>
-            </form>
-        </div>
+            <label className='input'>
+                Reservation ID:
+                <input
+                className="input-field"
+                type='number'
+                name='id'
+                value={id}
+                onChange={handleChange}
+                required
+                />
+            </label>
+            <button type="submit">Delete Reservation</button>
+        </form>
     )
 }
 

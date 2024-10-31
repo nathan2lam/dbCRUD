@@ -33,43 +33,44 @@ const ReservationUpdate = () => {
 
 
     return (
-        <div>
+        <form className='form' onSubmit={handleSubmit}>
             <h2>Update a Reservation</h2>
 
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Id:
-                    <input
-                    type="number"
-                    name="id"
-                    value={formData.id}
-                    onChange={handleChange}
-                    required
-                    />
-                </label>
-                <label>
-                    Date:
-                    <input
-                    type="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    required
-                    />
-                </label>
-                <label>
-                    Guests:
-                    <input
-                    type="number"
-                    name="guests"
-                    value={formData.guests}
-                    onChange={handleChange}
-                    required
-                    />
-                </label>
-                <button type="submit">Update Reservation</button>
-            </form>
-        </div>
+            <label className='input'>
+                Reservation ID:
+                <input
+                className="input-field"
+                type="number"
+                name="id"
+                value={formData.id}
+                onChange={handleChange}
+                required
+                />
+            </label>
+            <label className='input'>
+                Date:
+                <input
+                className="input-field"
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+                />
+            </label>
+            <label className='input'>
+                Guests:
+                <input
+                className="input-field"
+                type="number"
+                name="guests"
+                value={formData.guests}
+                onChange={handleChange}
+                required
+                />
+            </label>
+            <button type="submit">Update Reservation</button>
+        </form>
     )
 }
 
