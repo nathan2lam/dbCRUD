@@ -2,6 +2,7 @@ import ReservationForm from './components/reservationForm';
 import ReservationList from './components/reservationList';
 import ReservationUpdate from './components/updateReservation';
 import ReservationDelete from './components/deleteReservation';
+import ReservationDetails from './components/reservationDetails';
 import './App.css';
 
 
@@ -16,6 +17,7 @@ const App = () => {
         <ReservationUpdate />
         <ReservationDelete />
       </div>
+      <ReservationDetails />
     </div>
   );
 };

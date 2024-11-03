@@ -105,15 +105,33 @@ app.delete("/reservations/:id", (req, res) => {
     });
 });
 
-// Get all restaurants
-app.get("/restaurants", (req, res) => {
-    db.all("SELECT * FROM restaurants", (err, rows) => {
+// Join tables to get all reservation details
+app.get('/reservations/:id', (req, res) => {
+    const id = req.params.id;
+    const query = `
+        SELECT 
+            res.id,
+            res.reservation_date,
+            res.number_of_people,
+            rest.name as restaurant_name,
+            c.name as customer_name
+        FROM reservations res
+        JOIN restaurants rest ON res.restaurant_id = rest.id
+        JOIN customers c ON res.customer_id = c.id
+        WHERE res.id = ?
+    `;
+
+    db.get(query, [id], (err, row) => {
         if (err) {
-            console.error(err.message);
-            res.status(500).send("Error retrieving restaurants");
-        } else {
-            res.json(rows);
+            res.status(500).json({ error: err.message });
+            console.log(err.message);
+            return;
         }
+        if (!row) {
+            res.status(404).json({ error: 'Reservation not found' });
+            return;
+        }
+        res.json(row);
     });
 });
 
