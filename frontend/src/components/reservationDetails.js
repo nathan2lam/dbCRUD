@@ -4,7 +4,7 @@ import axios from 'axios';
 const API_URL = 'http://localhost:8000';
 
 const ReservationDetails = () => {
-    const [reservation, setReservation] = useState([]);
+    const [reservation, setReservation] = useState(null);
     const [reservationId, setReservationId] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
